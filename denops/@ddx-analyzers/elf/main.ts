@@ -37,8 +37,9 @@ export class Analyzer extends BaseAnalyzer<Params> {
     buffer: DdxBuffer,
     header: AnalyzeResult,
     offset: number,
+    size: number,
   ): number {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < size; i++) {
       header.values.push({
         name: `signature${i}`,
         rawType: "integer",
@@ -60,7 +61,7 @@ export class Analyzer extends BaseAnalyzer<Params> {
     const header: AnalyzeResult = { name: "ELF_HEADER", values: [] };
 
     // char e_ident[16];
-    offset = this.parseSignature(buffer, header, offset);
+    offset = this.parseSignature(buffer, header, offset, 16);
 
     // short e_type;
 
