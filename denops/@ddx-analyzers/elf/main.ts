@@ -3,7 +3,7 @@ import {
   type AnalyzeResult,
   BaseAnalyzer,
 } from "@shougo/ddx-vim/analyzer";
-import { arrayEquals } from "@shougo/ddx-vim/utils";
+import { parseLineOffset, arrayEquals } from "@shougo/ddx-vim/utils";
 
 export type Params = Record<string, never>;
 
@@ -64,30 +64,108 @@ export class Analyzer extends BaseAnalyzer<Params> {
     offset = this.parseSignature(buffer, header, offset, 16);
 
     // short e_type;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_type;",
+    );
 
-    // short e_machine;
+    // uint16_t e_machine;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_machine;",
+    );
 
-    // int e_version;
+    // uint32_t e_version;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint32_t e_version;",
+    );
 
-    // int e_entry;
+    // uint32_t e_entry;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint32_t e_version;",
+    );
 
-    // int e_phoff;
+    // uint32_t e_phoff;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint32_t e_version;",
+    );
 
-    // int shoff;
+    // uint32_t shoff;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint32_t e_version;",
+    );
 
-    // int e_flags;
+    // uint32_t e_flags;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint32_t e_version;",
+    );
 
-    // short e_ehsize;
+    // uint16_t e_ehsize;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_ehsize;",
+    );
 
-    // short e_pehtsize;
+    // uint16_t e_pehtsize;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_ehsize;",
+    );
 
-    // short e_phnum;
+    // uint16_t e_phnum;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_phnum;",
+    );
 
-    // short e_shetsize;
+    // uint16_t e_shetsize;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_shetsize;",
+    );
 
-    // short e_shnum;
+    // uint16_t e_shnum;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_shnum;",
+    );
 
-    // short e_shstrndx;
+    // uint16_t e_shstrndx;
+    offset = parseLineOffset(
+      buffer,
+      header,
+      offset,
+      "uint16_t e_shstrndx;",
+    );
 
     results.push(header);
     return [results, offset];
