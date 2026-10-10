@@ -50,7 +50,7 @@ export class Analyzer extends BaseAnalyzer<Params> {
       header.values.push({
         name: `signature${i}`,
         rawType: "integer",
-        value: buffer.getInt8(offset),
+        value: BigInt(buffer.getInt8(offset)),
         size: 1,
         address: offset,
       });
